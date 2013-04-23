@@ -1,6 +1,6 @@
 class Card
   include Comparable
-  attr_reader :rank
+  attr_reader :rank, :suit
 
   def initialize rank, suit = nil
     if suit.nil?
@@ -22,7 +22,7 @@ class Card
     elsif self.rank > other_card.rank
       1
     else
-      0
+      suit_compare self, other_card
     end
   end
 
@@ -66,6 +66,31 @@ class Card
       'A'
     else
       rank.to_s
+    end
+  end
+
+  private
+
+  def suit_compare card1, card2
+    # d < c < h < s
+    if card1.suit == card2.suit
+      0
+    elsif card1.suit == 'd'
+      -1
+    elsif card1.suit == 's'
+      1
+    elsif card1.suit == 'c'
+      if card2.suit == 'd'
+        1
+      else
+        -1
+      end
+    else # card1.suit == 'h'
+      if card2.suit == 's'
+        -1
+      else
+        1
+      end
     end
   end
 end
