@@ -26,9 +26,9 @@ User stories
 
 To Do
 -----
-* ruleset model
-* ai model
-* betting strategy model
-* flesh out game model
-* simulate view
-* results view
+- [ ] ruleset model
+- [ ] ai model
+- [ ] betting strategy model
+- [ ] flesh out game model
+- [ ] simulate view
+- [ ] results view
