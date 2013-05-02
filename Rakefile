@@ -12,9 +12,9 @@ task :default => [:test]
 task :test, [:item] do |tst, args|
   if args.item.nil?
     Rake::TestTask.new do |t|
-      t.pattern = 'spec/**/*_spec.rb'
+      t.pattern = 'test/**/test_*.rb'
     end
   else
-    ruby "spec/**/#{args.item}_spec.rb"
+    ruby "test/**/test_#{args.item}.rb"
   end
 end
