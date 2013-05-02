@@ -1,22 +1,12 @@
-require_relative './deck'
-
 class Game
-  attr_reader :bankroll, :dealer_cards, :player_cards
-  attr_accessor :betsize
+  attr_reader :dealer, :player
 
-  def initialize 
-    @bankroll = 1000
-    @betsize = 10
-    @dealer_cards = []
-    @player_cards = []
-    @deck = Deck.new
+  def initialize args
+    @dealer = args[:dealer]
+    @player = args[:player]
   end
 
-  def deal
-    @deck.shuffle
-    @player_cards << @deck.cards.first
-    @dealer_cards << @deck.cards.first
-    @player_cards << @deck.cards.first
-    @dealer_cards << @deck.cards.first
+  def start
+    @dealer.deal @player, @player.bet
   end
 end

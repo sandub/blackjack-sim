@@ -13,7 +13,9 @@ class Deck
   def initialize
     @cards = Array.new
     CARD_VALUES.each do |card|
-      @cards << Card.new(card)
+      8.times do
+        cards << Card.new(card)
+      end
     end
   end
 

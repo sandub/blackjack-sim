@@ -8,17 +8,20 @@ describe Player do
   end
 
   describe "#initialize" do
-    it "is a Player" do
-      @player.must_be_instance_of Player
-    end
-
     it "responds to cards" do
       assert_respond_to @player, :cards
     end
 
     it "will take a card" do
-      @player.cards << Card.new('4d')
-      @player.cards.first.value.must_equal '4d'
+      value = "4d"
+      card = Card.new(value)
+      @player.receive_cards [card]
+      assert_equal value, @player.cards.first.value
+    end
+
+    it "will take multiple cards" do
+      amount = @player.receive_cards [Card.new("3c"), Card.new("Ah")]
+      assert_equal 2, @player.cards.size
     end
   end
 end

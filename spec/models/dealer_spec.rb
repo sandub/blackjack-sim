@@ -1,36 +1,31 @@
 require 'minitest/autorun'
 require_relative '../../app/models/dealer.rb'
 require_relative '../../app/models/card.rb'
-require_relative '../../app/models/player.rb'
 
 describe Dealer do
   before do
     @dealer = Dealer.new
   end
 
-  describe "#initialize" do
-    it "is a Dealer" do
-      @dealer.must_be_instance_of Dealer
-    end
-  end
-
   describe "#deal" do
-    it "will deal a card to itself" do
-      @dealer.deal @dealer
-      card = @dealer.cards[0]
-      @dealer.cards.first.must_be_instance_of Card
+    before do
+      @player = Minitest::Mock.new
+      @player.expect :bet, 1
+      card1 = Card.new("2c")
+      card2 = Card.new("5d")
+      @player.expect :receive_cards, card1, [card1]
+      @player.expect :receive_cards, card2, [card2]
+      @dealer.deal @player
     end
 
-    it "will deal a card to a player" do
-      player = Player.new
-      @dealer.deal player
-      player.cards.first.must_be_instance_of Card
+    it "will deal 2 cards to itself" do
+      assert_instance_of(Card, @dealer.cards[0])
+      assert_instance_of(Card, @dealer.cards[1])
+    end
+
+    it "will deal 2 cards to the player" do
+      @player.verify
     end
   end
 
-  describe "#deck" do
-    it "has a deck" do
-      assert_respond_to @dealer, :deck
-    end
-  end
 end

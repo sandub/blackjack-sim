@@ -72,25 +72,14 @@ class Card
   private
 
   def suit_compare card1, card2
-    # d < c < h < s
+    suits = ['d','c','h','s']
+
     if card1.suit == card2.suit
       0
-    elsif card1.suit == 'd'
+    elsif suits.index(card1.suit) < suits.index(card2.suit)
       -1
-    elsif card1.suit == 's'
+    else
       1
-    elsif card1.suit == 'c'
-      if card2.suit == 'd'
-        1
-      else
-        -1
-      end
-    else # card1.suit == 'h'
-      if card2.suit == 's'
-        -1
-      else
-        1
-      end
     end
   end
 end

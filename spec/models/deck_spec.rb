@@ -9,17 +9,13 @@ describe Deck do
   end
 
   describe "#initialize" do
-    it "is a Deck" do
-      @deck.must_be_instance_of Deck
-    end
-
-    it "has 52 cards" do
-      @deck.size.must_be :==, 52
+    it "has 416 cards" do
+      assert_equal 416, @deck.size
     end
 
     it "has an As" do
       card = Card.new "As"
-      @deck.cards.count(card).must_be :==, 1
+      assert_equal 8, @deck.cards.count(card)
     end
   end
 
@@ -28,7 +24,7 @@ describe Deck do
       card1 = @deck.cards.first
       @deck.shuffle
       card2 = @deck.cards.first
-      card1.wont_be :==, card2
+      refute_equal card1, card2
     end
   end
 end
