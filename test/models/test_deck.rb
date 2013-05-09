@@ -27,4 +27,24 @@ describe Deck do
       refute_equal card1, card2
     end
   end
+
+  describe "#top" do
+    it "returns the first card" do
+      card = @deck.cards.first
+      assert_equal card, @deck.top
+    end
+
+    it "returns a different card next" do
+      @deck.shuffle
+      card1 = @deck.top
+      card2 = @deck.top
+      refute_equal card1, card2
+    end
+
+    it "moves the top card into the discard pile" do
+      card = @deck.top
+      assert_equal card, @deck.discard.first
+    end
+  end
 end
+

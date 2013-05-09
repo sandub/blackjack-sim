@@ -1,17 +1,19 @@
 require_relative './card'
 
 class Dealer
-  attr_accessor :cards
+  attr_reader :cards
 
-  def initialize
+  def initialize deck
     @cards = []
+    @deck = deck
   end
 
   def deal target
     @betSize = target.bet
-    target.receive_cards(Card.new("2c"))
-    @cards << Card.new("Ad")
-    target.receive_cards(Card.new("5d"))
-    @cards << Card.new("5c")
+    target.receive_cards([@deck.top])
+    @cards << @deck.top
+    target.receive_cards([@deck.top])
+    @cards << @deck.top
   end
 end
+

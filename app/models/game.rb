@@ -6,7 +6,8 @@ class Game
     @player = args[:player]
   end
 
-  def start
+  def simulate
     @dealer.deal @player, @player.bet
   end
 end
+

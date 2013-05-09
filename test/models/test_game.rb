@@ -5,16 +5,16 @@ describe Game do
   BET_SIZE = 1
 
   before do
-    @dealer = Minitest::Mock.new
-    @player = Minitest::Mock.new
+    @dealer = MiniTest::Mock.new
+    @player = MiniTest::Mock.new
     @game = Game.new dealer: @dealer, player: @player
   end
 
-  describe "#start" do
+  describe "#simulate" do
     before do
       @player.expect :bet, BET_SIZE
       @dealer.expect :deal, true, [@player, BET_SIZE]
-      @game.start
+      @game.simulate
     end
 
     it "should tell the player to bet" do
@@ -58,3 +58,4 @@ end
 #Blackjack pays 3:2
 #Suited blackjack pays 2:1
 #5 card blackjack pays 2:1
+

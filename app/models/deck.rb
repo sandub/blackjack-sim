@@ -1,7 +1,7 @@
 require_relative './card'
 
 class Deck
-  attr_accessor :cards
+  attr_accessor :cards, :discard
 
   CARD_VALUES = [
     "As", "2s", "3s", "4s", "5s", "6s", "7s", "8s", "9s", "10s", "Js", "Qs", "Ks",
@@ -12,11 +12,18 @@ class Deck
 
   def initialize
     @cards = Array.new
+    @discard = Array.new
     CARD_VALUES.each do |card|
       8.times do
         cards << Card.new(card)
       end
     end
+  end
+
+  def top
+    result = @cards.shift
+    @discard << result
+    result
   end
 
   def shuffle
