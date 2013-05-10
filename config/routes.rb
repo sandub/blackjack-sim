@@ -1,6 +1,10 @@
 BlackjackSim::Application.routes.draw do
+  get "simulations/new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
+
+  match '/simulate', to: 'simulations#new'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
@@ -48,7 +52,7 @@ BlackjackSim::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'simulations#new'
 
   # See how all your routes lay out with "rake routes"
 
