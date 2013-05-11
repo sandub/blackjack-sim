@@ -3,7 +3,7 @@ Given(/^anyone visits the simulation page$/) do
 end
 
 When(/^he starts the simulation$/) do
-  click_button start
+  click_button "Start"
 end
 
 Then(/^he should see the results page$/) do
