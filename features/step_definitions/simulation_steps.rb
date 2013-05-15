@@ -7,5 +7,5 @@ When(/^he starts the simulation$/) do
 end
 
 Then(/^he should see the results page$/) do
-  page.should have_selector('title', text: "Results")
+  assert page.has_content?("Results")
 end

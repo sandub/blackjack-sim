@@ -1,4 +1,5 @@
 <% provide(:title, 'Simulate') %>
 <h1>Simulate</h1>
-
-<button class="btn btn-large btn-primary">Start</button>
+<%= form_for(:simulation, url: simulations_path) do |f| %>
+  <%= f.submit "Start", class: "btn btn-large btn-primary" %>
+<% end %>

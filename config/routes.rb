@@ -1,9 +1,10 @@
 BlackjackSim::Application.routes.draw do
-  get "simulations/new"
+  resources :simulations, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
+  match '/results', to: 'simulations#show'
   match '/simulate', to: 'simulations#new'
 
   # Sample of regular route:
